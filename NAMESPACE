@@ -2,4 +2,7 @@
 
 export(DNA_sample)
 
+export(make_codon)
+
 export(DNA_to_RNA)
+
