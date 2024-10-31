@@ -11,12 +11,8 @@ You can install the development version of cendog from
 devtools::install_github("rforbiodatascience24/group_22_package")
 ```
 
-``` r
-library(cendog)
-```
-
 The cendog package replicates the central dogma of molecular biology. It
-consists of 5 functions which is described below.
+consists of 5 functions which is described below
 
 ## Description of functions
 
@@ -31,13 +27,15 @@ nucleotides and replacement equals true, so nucleotides can appear
 multiple times. This generates a vector DNA_nucleotides of random DNA
 bases. These nucleotides are then combined into a single string as all
 elements are joined without spaces to form a continuous DNA sequence.
+Example: amount_nucleotides \<- 10 DNA_sample(amount_nucleotides)
 
 #### Function 2: DNA_to_RNA
 
 This function, named DNA_to_RNA, is designed to convert a DNA sequence
 (provided as the input DNA1) into an RNA sequence by replacing thymine
 (T) with uracil (U). The output of the function, RNA1, is the RNA
-sequence equivalent to the input DNA sequence, DNA1.
+sequence equivalent to the input DNA sequence, DNA1. Example: DNA1 \<-
+“ATGCTATGA” DNA_to_RNA(DNA1)
 
 #### Function 3: make_codon
 
@@ -51,7 +49,8 @@ codon, starting at the ‘start’ position defined and moving three
 characters ahead. The ending positions for each codon are three
 characters after the corresponding starting position. The function
 returns a vector containing the codons generated from the input
-nucleotide sequence.
+nucleotide sequence. Example: nucleotides \<- “AUGCUU”
+make_codon(nucleotides)
 
 #### Function 4: codon_to_name
 
@@ -60,6 +59,7 @@ codons (provided as the input codons) into a single concatenated name by
 retrieving the corresponding one letter amino acid code from a
 predefined codon table. The output of the function, codon_names, is a
 single string representing the one letter codes of the input codons.
+Example: nucleotides \<- “AUGCUU” make_codon(nucleotides)
 
 #### Function 5: plot_amino_acid_counts
 
@@ -72,11 +72,37 @@ occurrences, and the ggplot2 package to create a bar plot. The two
 dependencies have been added to the description of the function with
 these 2 lines of code:
 
-``` r
-#' @importFrom ggplot2 ggplot aes geom_col theme_bw theme
-#' @importFrom stringr str_split boundary str_count
-```
+\#’ @importFrom ggplot2 ggplot aes geom_col theme_bw theme \#’
+@importFrom stringr str_split boundary str_count
 
 The output is a ggplot object, amino_acid_plot, which visually displays
 the counts of each amino acid, providing an easy way to interpret the
-composition of the sequence.
+composition of the sequence. Example: sequence \<- “AAGTCCGAA”
+plot_amino_acid_counts(sequence)
+
+### Example of how to use the functions combined
+
+##### Step 1: Generate a random DNA sequence
+
+amount_nucleotides \<- 30 DNA_sequence \<-
+DNA_sample(amount_nucleotides) print(paste(“Random DNA sequence:”,
+DNA_sequence))
+
+##### Step 2: Convert the DNA sequence to an RNA sequence
+
+RNA_sequence \<- DNA_to_RNA(DNA_sequence) print(paste(“Converted RNA
+sequence:”, RNA_sequence))
+
+##### Step 3: Split the RNA sequence into codons
+
+codons \<- make_codon(RNA_sequence, start = 1) print(“Codons generated
+from RNA sequence:”) print(codons)
+
+##### Step 4: Convert the codons to amino acid names
+
+amino_acid_sequence \<- codon_to_name(codons) print(paste(“Amino acid
+sequence:”, amino_acid_sequence))
+
+##### Step 5: Plot the amino acid frequency counts
+
+plot_amino_acid_counts(amino_acid_sequence)
