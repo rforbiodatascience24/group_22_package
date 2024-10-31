@@ -1,13 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cendog
-
-<!-- badges: start -->
-<!-- badges: end -->
-
-The goal of cendog is to …
-
 ## Installation
 
 You can install the development version of cendog from
@@ -23,7 +16,9 @@ library(cendog)
 ```
 
 The cendog package replicates the central dogma of molecular biology. It
-consists of 5 functions which is described below
+consists of 5 functions which is described below.
+
+## Description of functions
 
 #### Function 1: DNA_sample
 
